@@ -10,6 +10,10 @@ angular.module('forcetk4ng', [])
         headers['Authorization'] = 'OAuth ' + this.accessToken;
     }
 
+    this.setApiVersion = function(apiVersion){
+        this.apiVersion = apiVersion;
+    }
+
     this.ajax = function(path, method, responseType){
         var d = $q.defer();
 
