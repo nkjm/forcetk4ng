@@ -1,7 +1,7 @@
 PREREQUISITES
 ==============
 - AngularJS ($http and $q which should be supported in modern releases are required.)
-- Visualforce (Current version of forcetk4ng only runs on Visualforce.)
+- Force.com Visualforce (Current version of forcetk4ng only runs on Visualforce.)
 
 Getting Started
 ===============
