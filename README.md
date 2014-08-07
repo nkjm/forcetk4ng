@@ -33,18 +33,17 @@ Step 5. Set Session ID
 
 Step 5. Use the service. (Get records of certain object.)
 ----------------------------------------------------------------
-    $scope.getRecordsOfYourObj = function(){
-        var soql = "select Id, Name from yourObj";
-        force.query(soql)
-        .then(
-            function(records){
-                console.log(records);
-            },
-            function(event){
-                console.log(event);
-            }
-        );
-    }
+    force.query("select Id, Name from yourObj")
+    .then(
+        // callback on success
+        function(records){
+            console.log(records);
+        },
+        // callback on failure
+        function(event){
+            console.log(event);
+        }
+    );
 
 Sample Code
 ===========
