@@ -1,4 +1,18 @@
-PREREQUISITES
+Overview
+========
+forcetk4ng is an AngularJS Module which provides easy access to Force.com REST API in your javascript code.
+
+While Force.com Javascript REST Toolkit is already out there, forcetk4ng enables you to make your app a little bit more Angular way.
+You can query/create/retrieve/update/upsert/delete/describe the object on Force.com using $q which is standard implementation of promise/deferred of AngularJS so that you can avoid deeply nested callback chain and keep your code clean when you do callout asyncronously.
+
+And there is no dependency other than AngularJS itself.
+You don't need jQuery or other library.
+
+Please keep in mind that this tookit consumes API Call of Force.com on the contrary of RemoteTK which is included in Forc.ecom Javascript REST Toolkit.
+If you have to be very sensitive about API Call consumption but need easy access to Force.com in your js code, you should go with RemoteTK.
+
+
+Prerequisites
 ==============
 - AngularJS ($http and $q which should be supported in modern releases are required.)
 - Force.com Visualforce (Current version of forcetk4ng only runs on Visualforce.)
