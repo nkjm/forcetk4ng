@@ -15,16 +15,16 @@ Step 1. Upload angular.min.js and forcetk4ng as Static Resource.
         Name: forcetk4ng_js
         Cache Control: Public
 
-Step 2. Load the script.
+Step 2. Create Visualforce Page and Load the script.
 -------------------------------------------------------------------
     <script src="{!$Resource.angular_min_js"></script>
     <script src="{!$Resource.forcetk4ng_js"></script>
 
-Step 3. Load the module.
+Step 3. Inject forcetk4ng to your module.
 ---------------------------------------------
     angular.module('yourApp', ['forcetk4ng'])
 
-Step 4. Declare Depedency in controller.
+Step 4. Declare Depedency in your controller.
 ------------------------------------------------------------------------------------------------------
     .controller('yourCtl', function($scope, force){
 
