@@ -1,5 +1,4 @@
-Overview
-========
+## Overview
 forcetk4ng is an AngularJS Module which provides easy access to Force.com REST API in your javascript code.
 
 While Force.com Javascript REST Toolkit is already out there, forcetk4ng enables you to make your app a little bit more Angular way.
@@ -12,15 +11,12 @@ Please keep in mind that this tookit consumes API Call of Force.com on the contr
 If you have to be very sensitive about API Call consumption but need easy access to Force.com in your js code, you should go with RemoteTK.
 
 
-Prerequisites
-==============
+## Prerequisites
 - AngularJS ($http and $q which should be supported in modern releases are required.)
 - Force.com Visualforce (Current version of forcetk4ng only runs on Visualforce.)
 
-Getting Started
-===============
-Step 1. Upload angular.min.js and forcetk4ng as Static Resource.
--------------------------------------------------------------------
+## Getting Started
+### Step 1. Upload angular.min.js and forcetk4ng as Static Resource.
     angular.min.js
         Name: angular_min_js
         Cache Control: Public
@@ -29,24 +25,20 @@ Step 1. Upload angular.min.js and forcetk4ng as Static Resource.
         Name: forcetk4ng_js
         Cache Control: Public
 
-Step 2. Create Visualforce Page and Load the script.
--------------------------------------------------------------------
+### Step 2. Create Visualforce Page and Load the script.
     <script src="{!$Resource.angular_min_js"></script>
     <script src="{!$Resource.forcetk4ng_js"></script>
 
-Step 3. Inject forcetk4ng to your module.
----------------------------------------------
+### Step 3. Inject forcetk4ng to your module.
     angular.module('yourApp', ['forcetk4ng'])
 
-Step 4. Declare Depedency in your controller.
-------------------------------------------------------------------------------------------------------
+### Step 4. Declare Depedency in your controller.
     .controller('yourCtl', function($scope, force){
 
-Step 5. Set Session ID
+### Step 5. Set Access Token.
     force.setAccessToken('{!$Api.Session_ID}');
 
-Step 5. Use the service. (Get records of certain object.)
-----------------------------------------------------------------
+### Step 6. Use the service. (Get records of certain object.)
     force.query("select Id, Name from yourObj")
     .then(
         // callback on success
@@ -59,8 +51,7 @@ Step 5. Use the service. (Get records of certain object.)
         }
     );
 
-Sample Code
-===========
+## Sample Code
     <apex:page standardStylesheets="false" showHeader="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">
     <html ng-app="ngbootcamp">
     <head>
@@ -102,8 +93,7 @@ Sample Code
     </apex:page>
 
 
-Supported Methods
-=================
+## Supported Methods
 - force.setAccessToken(ACCESS_TOKEN)
 - force.setApiVersion(API_VERSION)
 - force.ajax(PATH, METHOD, RESPONSE_TYPE)
