@@ -38,7 +38,7 @@ angular.module('forcetk4ng', [])
 
         $http({
             method: 'GET',
-            url: 'https://' + location.hostname + '/services/data/' + this.apiVersion + '/query/?q=' + escape(soql),
+            url: 'https://' + location.hostname + '/services/data/' + this.apiVersion + '/query/?q=' + encodeURI(soql),
             headers: headers,
             responseType: 'text/json'
         })
