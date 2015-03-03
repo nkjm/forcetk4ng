@@ -1,6 +1,7 @@
 angular.module('forcetk4ng', [])
-.service('force', function($http, $q){
-    this.apiVersion = 'v31.0';
+.service('force', function($http, $q, $log){
+    this.apiVersion = 'v32.0';
+    this.instanceUrl = 'https://' + location.hostname;
 
     var headers = {}; 
     headers['Content-Type'] = 'application/json';
@@ -14,12 +15,16 @@ angular.module('forcetk4ng', [])
         this.apiVersion = apiVersion;
     }
 
+    this.setInstanceUrl = function(instanceUrl){
+        this.instanceUrl = instanceUrl;
+    }
+
     this.ajax = function(path, method, responseType){
         var d = $q.defer();
 
         $http({
             method: method || 'GET',
-            url: 'https://' + location.hostname + path,
+            url: this.instanceUrl + path,
             headers: headers,
             responseType: responseType || 'text/json'
         })
@@ -38,7 +43,7 @@ angular.module('forcetk4ng', [])
 
         $http({
             method: 'GET',
-            url: 'https://' + location.hostname + '/services/data/' + this.apiVersion + '/query/?q=' + encodeURI(soql),
+            url: this.instanceUrl + '/services/data/' + this.apiVersion + '/query/?q=' + encodeURI(soql),
             headers: headers,
             responseType: 'text/json'
         })
@@ -68,7 +73,7 @@ angular.module('forcetk4ng', [])
 
         $http({
             method: 'GET',
-            url: 'https://' + location.hostname + '/services/data/' + this.apiVersion + '/sobjects/' + objectType + '/' + id + fieldsInCsvInUri,
+            url: this.instanceUrl + '/services/data/' + this.apiVersion + '/sobjects/' + objectType + '/' + id + fieldsInCsvInUri,
             headers: headers,
             responseType: 'text/json'
         })
@@ -101,6 +106,7 @@ angular.module('forcetk4ng', [])
         }
 
         var apiVersion = this.apiVersion;
+        var instanceUrl = this.instanceUrl;
 
         this.describe(objectType)
         .then(
@@ -113,7 +119,7 @@ angular.module('forcetk4ng', [])
                 })
                 $http({
                     method: 'POST',
-                    url: 'https://' + location.hostname + '/services/data/' + apiVersion + '/sobjects/' + objectType + '/',
+                    url: instanceUrl + '/services/data/' + apiVersion + '/sobjects/' + objectType + '/',
                     headers: headers,
                     responseType: 'text/json',
                     data: record
@@ -152,6 +158,7 @@ angular.module('forcetk4ng', [])
         }
 
         var apiVersion = this.apiVersion;
+        var instanceUrl = this.instanceUrl;
         var params = {};
         params['_HttpMethod'] = 'PATCH';
 
@@ -166,7 +173,7 @@ angular.module('forcetk4ng', [])
                 })
                 $http({
                     method: 'PATCH',
-                    url: 'https://' + location.hostname + '/services/data/' + apiVersion + '/sobjects/' + objectType + '/' + origRecord.Id,
+                    url: instanceUrl + '/services/data/' + apiVersion + '/sobjects/' + objectType + '/' + origRecord.Id,
                     headers: headers,
                     responseType: 'text/json',
                     data: record,
@@ -206,6 +213,7 @@ angular.module('forcetk4ng', [])
         }
 
         var apiVersion = this.apiVersion;
+        var instanceUrl = this.instanceUrl;
         var params = {};
         params['_HttpMethod'] = 'PATCH';
 
@@ -220,7 +228,7 @@ angular.module('forcetk4ng', [])
                 })
                 $http({
                     method: 'PATCH',
-                    url: 'https://' + location.hostname + '/services/data/' + apiVersion + '/sobjects/' + objectType + '/' + extIdField + '/' + extId,
+                    url: instanceUrl + '/services/data/' + apiVersion + '/sobjects/' + objectType + '/' + extIdField + '/' + extId,
                     headers: headers,
                     responseType: 'text/json',
                     data: record,
@@ -246,7 +254,7 @@ angular.module('forcetk4ng', [])
 
         $http({
             method: 'DELETE',
-            url: 'https://' + location.hostname + '/services/data/' + this.apiVersion + '/sobjects/' + objectType + '/' + id,
+            url: this.instanceUrl + '/services/data/' + this.apiVersion + '/sobjects/' + objectType + '/' + id,
             headers: headers,
             responseType: 'text/json'
         })
@@ -265,7 +273,7 @@ angular.module('forcetk4ng', [])
 
         $http({
             method: 'GET',
-            url: 'https://' + location.hostname + '/services/data/' + this.apiVersion + '/sobjects/' + objectType + '/describe/',
+            url: this.instanceUrl + '/services/data/' + this.apiVersion + '/sobjects/' + objectType + '/describe/',
             headers: headers,
             responseType: 'text/json'
         })

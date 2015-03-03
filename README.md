@@ -13,7 +13,7 @@ If you have to be very sensitive about API Call consumption but need easy access
 
 ## Prerequisites
 - AngularJS ($http and $q which should be supported in modern releases are required.)
-- Force.com Visualforce (Current version of forcetk4ng only runs on Visualforce.)
+- You can host your javascript app on Visualforce and external Web Server. In using external Web Server, you need to add CORS setting in Salesforce Org.
 
 ## Getting Started
 ### Step 1. Upload angular.min.js and forcetk4ng as Static Resource.
@@ -38,7 +38,10 @@ If you have to be very sensitive about API Call consumption but need easy access
 ### Step 5. Set Access Token.
     force.setAccessToken('{!$Api.Session_ID}');
 
-### Step 6. Use the service. (Get records of certain object.)
+### Step 6. Set Instance URL. This step is only required if this javascript is not hosted on Visualforce. And If this is the case, you also need to add CORS setting in Salesforce Org.
+    force.setInstanceUrl('INSTANCE_URL_RETRIEVED_BY_OAUTH2');
+
+### Step 7. Use the service. (Get records of certain object.)
     force.query("select Id, Name from yourObj")
     .then(
         // callback on success
